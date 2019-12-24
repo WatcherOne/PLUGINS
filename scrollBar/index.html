@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/static/jquery.mCustomScrollbar.css">
+  <script src="/static/jquery-1.11.0.min.js"></script>
+  <script src="/static/jquery.mCustomScrollbar.concat.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 直接对 需要 滚动的dom 执行该函数
+    $('.dom').mCustomScrollbar()
+    // 若引用 elementUI 的table 需要对 body进行滚动 则
+    $('.el-table').find('.el-table__body-wrapper').mCustomScrollbar()
+    // 且需要对 table header的下边框去掉, 加入body的上边框; 否则 右边会有空白
+  </script>
+</body>
+</html>

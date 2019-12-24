@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="/static/jquery-1.11.0.min.js"></script>
+  <script src="/static/player/swfobject.js"></script>
+  <script src="/static/player/live_player.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="player"></div>
+  <script>
+    // swf 与 png 需要放在 根目录下
+    // 当dom渲染成功 即可执行下面的函数 开始播放
+    const player = null
+    function play_rtmp(url) {
+      if(this.player !== null) {
+        this.player.play(url)
+        return
+      }
+      let self = this
+      // 定义播放object
+      this.player = uPlayer('player')
+      // 准备好的回调 并执行里面的函数
+      this.player.on_player_ready = function() {
+        this.setLogo('/static/player-bg.png')
+        this.setdebug(false)
+        this.showAudColumn(false)
+        this.showControl(true)
+        this.setlowdelay(true)
+        // 开始播放
+        this.play(url)
+      }
+      // 音量大小的回调
+      this.player.on_player_aud_col = (left, right) => {
+        console.log(left, right)
+      }
+    }
+  </script>
+</body>
+</html>
